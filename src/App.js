@@ -1,12 +1,11 @@
-import Navbar from "./navbar/Navbar";
-import Home from "./pages/home/Home";
-import Single from "./pages/single/Single";
+import Navbar from "../src/components/navbar/Navbar";
+import Write from "./pages/write/Write";
 
 function App() {
   return (
     <>
       <Navbar />
-      <Single />
+      <Write />
     </>
   );
 }

@@ -1,11 +1,11 @@
 import Navbar from "../src/components/navbar/Navbar";
-import Write from "./pages/write/Write";
+import Register from "./pages/register/Register";
 
 function App() {
   return (
     <>
       <Navbar />
-      <Write />
+      <Register />
     </>
   );
 }

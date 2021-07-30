@@ -1,5 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Register.css";
+import p1 from "./Write-with-eduvoice.jpg";
 export default function Register() {
   return (
     <div className="registerbox">
@@ -17,7 +19,11 @@ export default function Register() {
         <input type="password" placeholder="Password" />
       </div>
       <input type="button" className="btn" value="Register" />
-      <button className="registerbutton">Login</button>
+      <button className="registerbutton">
+        <Link to="/login" style={{ textDecoration: "none", color: "inherit" }}>
+          Login
+        </Link>
+      </button>
     </div>
   );
 }

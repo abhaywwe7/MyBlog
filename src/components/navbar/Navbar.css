@@ -27,6 +27,7 @@ font-family: 'Varela', sans-serif;
   height: 40px;
   border-radius: 50%;
   object-fit: cover;
+  cursor: pointer;
 }
 .topIcon {
   cursor: pointer;

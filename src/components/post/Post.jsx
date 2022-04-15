@@ -1,28 +1,29 @@
 import React from "react";
 import "./Post.css";
-import post1 from "./20190311153646-GettyImages-932272022.jpeg";
-export default function Post() {
+// import post1 from "./20190311153646-GettyImages-932272022.jpeg";
+import { Link } from "react-router-dom";
+export default function Post({ post }) {
+  const publicFolder = "http://localhost:5000/images/";
   return (
     <div className="post">
-      <img src={post1} className="postImg" alt="" srcset="" />
+      {post.photo && (
+        <img src={publicFolder + post.photo} className="postImg" alt="" />
+      )}
       <div className="postInfo">
         <div className="postCategory">
-          <span className="postCategorySub">Nature</span>
-          <span className="postCategorySub">Animal</span>
+          {post.categories.map((e) => (
+            <span className="postCategorySub">{e.name}</span>
+          ))}
         </div>
-        <span className="postTitle">Lorem ipsum dolor sit</span>
+        <Link to={`/post/${post._id}`} className="link">
+          <span className="postTitle">{post.title}</span>
+        </Link>
         <hr />
-        <span className="postDate">1 hour ago</span>
+        <span className="postDate">
+          {new Date(post.createdAt).toDateString()}
+        </span>
       </div>
-      <p className="postDesc">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe
-        voluptate dolor quasi repellendus temporibus numquam eos, eveniet ipsum
-        labore delectus. Lorem ipsum dolor sit amet consectetur, adipisicing
-        elit. Saepe voluptate dolor quasi repellendus temporibus numquam eos,
-        eveniet ipsum labore delectus. Lorem ipsum dolor sit amet consectetur,
-        adipisicing elit. Saepe voluptate dolor quasi repellendus temporibus
-        numquam eos, eveniet ipsum labore delectus.
-      </p>
+      <p className="postDesc">{post.desc}</p>
     </div>
   );
 }

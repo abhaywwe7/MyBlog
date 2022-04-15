@@ -1,24 +1,52 @@
-import React from "react";
+import axios from "axios";
+import React, { useRef, useContext } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../../context/Context";
 import "./Login.css";
 export default function Login() {
+  const userRef = useRef();
+  const passwordRef = useRef();
+  const { dispatch, isFetching } = useContext(Context);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    dispatch({ type: "LOGIN_START" });
+    try {
+      const resp = await axios.post("/auth/login", {
+        username: userRef.current.value,
+        password: passwordRef.current.value,
+      });
+      dispatch({ type: "LOGIN_SUCCESS", payload: resp.data });
+    } catch (err) {
+      dispatch({ type: "LOGIN_FAILED" });
+    }
+  };
+
+  // console.log(user);
+  console.log(isFetching);
   return (
-    <div className="loginbox">
-      <h1>Login</h1>
-      <div className="textbox">
-        <i className="fas fa-user"></i>
-        <input type="text" placeholder="Username" />
-      </div>
-      <div className="textbox">
-        <i className="fas fa-lock"></i>
-        <input type="password" placeholder="Password" />
-      </div>
-      <input type="button" className="btn" value="Sign in" />
-      <button className="loginregisterbutton">
-        <Link
-          to="/register"
-          style={{ textDecoration: "none", color: "inherit" }}
-        >
+    <div className="login">
+      <span className="loginTitle">Login</span>
+      <form className="loginForm" onSubmit={handleSubmit}>
+        <label>Username</label>
+        <input
+          type="text"
+          className="loginInput"
+          placeholder="Enter your username..."
+          ref={userRef}
+        />
+        <label>Password</label>
+        <input
+          type="password"
+          className="loginInput"
+          placeholder="Enter your password..."
+          ref={passwordRef}
+        />
+        <button className="loginButton" type="submit" disabled={isFetching}>
+          Login
+        </button>
+      </form>
+      <button className="loginRegisterButton">
+        <Link className="link" to="/register">
           Register
         </Link>
       </button>

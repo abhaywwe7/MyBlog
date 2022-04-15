@@ -1,73 +1,60 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-
-  /* background: url("Write-with-eduvoice.jpg") no-repeat;
-  background-size: cover; */
+.login {
+  height: calc(100vh - 50px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.5)
+    ),
+    url("https://images.pexels.com/photos/768473/pexels-photo-768473.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500");
+  background-size: cover;
 }
 
-.loginbox {
-  width: 280px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: tomato;
+.loginTitle {
+  font-size: 50px;
 }
-.loginbox h1 {
-  float: left;
-  font-size: 40px;
-  border-bottom: 6px solid tomato;
-  margin-bottom: 50px;
-  padding: 13px 0;
+
+.loginForm {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
 }
-.textbox {
-  width: 100%;
-  overflow: hidden;
-  font-size: 20px;
-  padding: 8px 0;
-  margin: 8px 0;
-  border-bottom: 1px solid tomato;
+
+.loginForm > label {
+  margin: 10px 0;
 }
-.textbox i {
-  width: 26px;
-  float: left;
-  text-align: center;
-}
-.textbox input {
+
+.loginInput {
+  padding: 10px;
+  background-color: white;
   border: none;
+}
 
-  outline: none;
-  background: none;
-  color: tomato;
-  font-size: 18px;
-  width: 80%;
-  float: left;
-  margin: 0 10px;
-}
-.btn {
-  width: 100%;
-  background: none;
-  border: 2px solid tomato;
-  color: black;
-  padding: 5px;
-  font-size: 18px;
+.loginButton {
+  margin-top: 20px;
   cursor: pointer;
-  margin: 12px 0;
+  background-color: lightcoral;
+  border: none;
+  color: white;
+  border-radius: 10px;
+  padding: 10px;
 }
-.btn:hover {
-  background-color: tomato;
-  font-weight: bold;
-}
-.loginregisterbutton {
-  background-color: tomato;
-  cursor: pointer;
-  width: 100%;
-  color: black;
-  padding: 5px;
-  font-size: 18px;
-  margin: 12px 0;
 
-  border: 2px solid tomato;
+.loginButton:disabled {
+  cursor: not-allowed;
+  background-color: rgb(252, 173, 173);
+}
+
+.loginRegisterButton {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background-color: teal;
+  cursor: pointer;
+  border: none;
+  padding: 10px;
+  color: white;
+  border-radius: 10px;
 }
